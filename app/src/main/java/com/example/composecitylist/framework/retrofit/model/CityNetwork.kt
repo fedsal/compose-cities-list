@@ -19,6 +19,7 @@ fun CityNetwork.toDomainModel(): City {
         id = id,
         countryCode = countryCode,
         name = name,
-        coordinate = coordinate.toDomainModel()
+        latitude = coordinate.latitude,
+        longitude = coordinate.longitude,
     )
 }
