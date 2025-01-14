@@ -1,9 +1,10 @@
-package com.example.composecitylist
+package com.example.composecitylist.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
@@ -36,18 +37,21 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
+    Column(
         modifier = modifier
-    )
-    Button(onClick = {
-        try {
-            val repository = CityRepository(RemoteCityDataSource(), RemoteCityDataSource())
-            runBlocking { repository.getCountries() }
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }) { }
+    ) {
+        Text(
+            text = "Hello $name!",
+        )
+        Button(onClick = {
+            try {
+                val repository = CityRepository(RemoteCityDataSource(), RemoteCityDataSource())
+                runBlocking { repository.getCountries() }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }) { Text(text = "Retrieve data") }
+    }
 }
 
 @Preview(showBackground = true)
