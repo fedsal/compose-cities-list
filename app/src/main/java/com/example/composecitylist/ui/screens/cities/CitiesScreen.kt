@@ -18,11 +18,12 @@ import com.example.composecitylist.ui.composables.CityRow
 import com.example.composecitylist.ui.composables.FavouriteButton
 import com.example.composecitylist.ui.composables.SearchBar
 import com.example.composecitylist.ui.screens.LoadingScreen
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun CitiesScreen(
     modifier: Modifier = Modifier,
-    viewmodel: CityViewmodel,
+    viewmodel: CityViewmodel = koinViewModel(),
     onCityClicked: (city: City) -> Unit) {
     val uiState = viewmodel.uiState.collectAsState()
     if (uiState.value.isLoading) {

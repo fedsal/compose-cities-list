@@ -57,6 +57,7 @@ dependencies {
     implementation(libs.room.ktx)
     implementation(libs.maps.compose)
     implementation(libs.compose.navigation)
+    implementation(libs.koin.compose)
     ksp(libs.room.compiler)
     annotationProcessor(libs.room.compiler)
     testImplementation(libs.junit)
