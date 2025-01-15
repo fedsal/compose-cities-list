@@ -13,18 +13,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.composecitylist.domain.City
 import com.example.composecitylist.ui.composables.CityRow
 import com.example.composecitylist.ui.composables.FavouriteButton
-import com.example.composecitylist.ui.screens.LoadingScreen
 import com.example.composecitylist.ui.composables.SearchBar
+import com.example.composecitylist.ui.screens.LoadingScreen
 
 @Composable
-fun CitiesScreen(viewmodel: CityViewmodel) {
+fun CitiesScreen(
+    modifier: Modifier = Modifier,
+    viewmodel: CityViewmodel,
+    onCityClicked: (city: City) -> Unit) {
     val uiState = viewmodel.uiState.collectAsState()
     if (uiState.value.isLoading) {
         LoadingScreen()
     } else {
-        Column(Modifier
+        Column(modifier
             .fillMaxSize()
             .padding(20.dp)) {
             Spacer(modifier = Modifier.height(16.dp))
@@ -43,7 +47,7 @@ fun CitiesScreen(viewmodel: CityViewmodel) {
                 items(uiState.value.cities) { city ->
                     CityRow(
                         city,
-                        onClick = { },
+                        onClick = { onCityClicked(city) },
                         onFavouriteClick = { viewmodel.updateFavouriteCity(city) })
                     Spacer(modifier = Modifier.height(8.dp))
                 }
