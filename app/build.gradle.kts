@@ -55,6 +55,8 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
+    implementation(libs.maps.compose)
+    implementation(libs.compose.navigation)
     ksp(libs.room.compiler)
     annotationProcessor(libs.room.compiler)
     testImplementation(libs.junit)
