@@ -14,7 +14,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.outlined.Search
+import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -65,7 +65,7 @@ fun CityRow(city: City, onFavouriteClick: () -> Unit = {}, onClick: (city: City)
                     colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
                 ) {
                     Icon(
-                        imageVector = if (city.isFavourite) Icons.Filled.Favorite else Icons.Outlined.Search,
+                        imageVector = if (city.isFavourite) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
                         contentDescription = "Favourite Icon",
                         tint = MaterialTheme.colorScheme.primary
                     )

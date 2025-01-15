@@ -6,7 +6,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.outlined.Search
+import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -33,7 +33,7 @@ fun FavouriteButton(modifier: Modifier = Modifier, onClick: (enabled: Boolean) -
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Icon(
-                imageVector = if (filterEnabled.value) Icons.Filled.Favorite else Icons.Outlined.Search,
+                imageVector = if (filterEnabled.value) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
                 contentDescription = "Favourite Icon"
             )
             Text("Favourites", fontSize = 10.sp)
