@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.composecitylist.data.CityRepository
 import com.example.composecitylist.domain.City
-import kotlinx.coroutines.Dispatchers
+import com.example.composecitylist.ui.utils.DispatcherProvider
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
@@ -13,7 +13,8 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class CityViewmodel(
-    private val cityRepository: CityRepository
+    private val cityRepository: CityRepository,
+    private val dispatcherProvider: DispatcherProvider,
 ): ViewModel() {
 
     private val _uiState = MutableStateFlow(CityUIState())
@@ -25,7 +26,7 @@ class CityViewmodel(
         getCities()
     }
 
-    private fun getCities() = viewModelScope.launch(Dispatchers.IO) {
+    private fun getCities() = viewModelScope.launch(dispatcherProvider.io) {
         _uiState.value = _uiState.value.copy(isLoading = true)
         cityRepository.getCities()
             .distinctUntilChanged()
@@ -48,7 +49,7 @@ class CityViewmodel(
             }
     }
 
-    fun updateFavouriteCity(city: City) = viewModelScope.launch(Dispatchers.IO) {
+    fun updateFavouriteCity(city: City) = viewModelScope.launch(dispatcherProvider.io) {
         cityRepository.updateFavouriteCity(city.id, !city.isFavourite)
     }
 
